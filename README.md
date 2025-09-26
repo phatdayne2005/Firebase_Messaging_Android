@@ -35,13 +35,15 @@ Dự án này là một ví dụ cơ bản minh họa cách tích hợp **Fireba
 - Android **tự động hiển thị thông báo** khi app ở background.  
 - Ví dụ payload:
   ```json
-  {
-    "token": "<DEVICE_FCM_TOKEN>",
-    "notification": {
-      "title": "Test Title",
-      "body": "Test Body"
-    }
-  }
+   {
+      "message":{
+         "token": "<DEVICE_FCM_TOKEN>",
+         "notification":{
+           "title": "Test Title",
+           "body": "Test Body"
+         }
+      }
+   }
   ```
 - Nếu app ở foreground → cần xử lý thủ công trong `onMessageReceived()`.
 
@@ -52,14 +54,16 @@ Dự án này là một ví dụ cơ bản minh họa cách tích hợp **Fireba
 - Luôn **được xử lý trong code** (kể cả foreground hay background).  
 - Ví dụ payload:
   ```json
-  {
-     "token": "<DEVICE_FCM_TOKEN>",
-     "data": {
-        "name": "Phatdepzai",
-        "title": "Test Title",
-        "body": "Test Body"
-     }
-  }
+   {
+      "message":{
+         "token": "<DEVICE_FCM_TOKEN>",
+         "data": {
+           "name": "Phatdepzai",
+           "title": "Test Title",
+           "body": "Test Body"
+         }
+      }
+   }
   ```
 - Ưu điểm: Linh hoạt, có thể tự định nghĩa dữ liệu.
 
