@@ -36,7 +36,7 @@ Dự án này là một ví dụ cơ bản minh họa cách tích hợp **Fireba
 - Ví dụ payload:
   ```json
   {
-    "to": "<DEVICE_FCM_TOKEN>",
+    "token": "<DEVICE_FCM_TOKEN>",
     "notification": {
       "title": "Test Title",
       "body": "Test Body"
@@ -53,12 +53,12 @@ Dự án này là một ví dụ cơ bản minh họa cách tích hợp **Fireba
 - Ví dụ payload:
   ```json
   {
-    "to": "<DEVICE_FCM_TOKEN>",
-    "data": {
-      "title": "Hello",
-      "body": "This is a custom message",
-      "name": "John"
-    }
+     "token": "<DEVICE_FCM_TOKEN>",
+     "data": {
+        "name": "Phatdepzai",
+        "title": "Test Title",
+        "body": "Test Body"
+     }
   }
   ```
 - Ưu điểm: Linh hoạt, có thể tự định nghĩa dữ liệu.
@@ -177,20 +177,23 @@ override fun onMessageReceived(remoteMessage: RemoteMessage) {
 1. Copy **FCM token** từ logcat.  
 2. Gửi POST request đến:  
    ```
-   https://fcm.googleapis.com/fcm/send
+   https://fcm.googleapis.com/v1/projectId/messages:send
    ```
 3. Headers:
    ```
-   Authorization: key=<SERVER_KEY>
+   Authorization: Bearer access_token
    Content-Type: application/json
    ```
 4. Body ví dụ:
    ```json
    {
-     "to": "<DEVICE_FCM_TOKEN>",
-     "notification": {
-       "title": "Hello Firebase",
-       "body": "This is a notification message"
+     "message": {
+       "token": REGISTRATION_TOKEN (FCM TOKEN),
+       "notification": {
+         "title": "FCM API test",
+         "body": "This is the body of the notification.",
+         "image": "https://cat.10515.net/1.jpg"
+       }
      }
    }
    ```
